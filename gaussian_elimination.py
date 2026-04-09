@@ -6,8 +6,8 @@ def gaussian_elimination(M: list[list[float]]):
         # Pivote: Se busca el renglon o fila con el valor máximo en la columna i
         fila_max = i
         for k in range(i + 1, n):
-            if math.abs(A[k][i]) > math.abs(A[max_row][i]):
-                max_row = k
+            if math.abs(A[k][i]) > math.abs(A[fila_max][i]):
+                fila_max = k
         
         # Intercambio de renglones
         A[i], A[fila_max] = A[fila_max], A[i]
