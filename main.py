@@ -5,7 +5,7 @@ import numbers
 
 from math import pi
 
-from linear_solver import solve
+from gaussian_elimination import solve
 
 # linspace obtenido de (https://code.activestate.com/recipes/579000/)
 class linspace(collections.abc.Sequence):
