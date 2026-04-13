@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
 from collections.abc import Sequence
-import numbers
+from gram_schmidt import matmul
 
+import numbers
 from math import pi
 
 from gaussian_elimination import diag
+from lu import lu
 from qr import qr
 
 # linspace obtenido de (https://code.activestate.com/recipes/579000/)
@@ -64,6 +66,22 @@ def main():
     d = diag(A)
     print("\nDiagonal:")
     print(d)
+
+    #Ejercicio : LU
+    L, U = lu(A)
+    print("\nL:")
+    for fila in L:
+        print(fila)
+
+    print("\nU:")
+    for fila in U:
+        print(fila)
+
+    # Verificación
+    print("\nComprobación L * U:")
+    resultado = matmul(L, U)
+    for fila in resultado:
+        print(fila)
 
     # Ejercicio 3: QR
     Q, R = qr(A)
