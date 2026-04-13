@@ -46,22 +46,43 @@ class linspace(Sequence):
         return hash((type(self), self.start, self.stop, self.num))  
 
 def main():
-
-    A = [
-        [1, 2, -2, 1],
-        [4, 5, -7, 6],
-        [5, 25, -15, -3],
-        [6, -12, -6, 22]
-    ]
-
-    print("Matriz original:")
-    for fila in A:
-        print(fila)
-
     # Ejercicio 1: Diagonalización
-    d = diag(A)
-    print("\nDiagonal:")
-    print(d)
+    while True:
+        menu()
+        opcion = input("Selecciona una opción: ")
+        
+        if opcion == "1":
+            A = [
+                [1, 2, -2, 1],
+                [4, 5, -7, 6],
+                [5, 25, -15, -3],
+                [6, -12, -6, 22]
+            ]
+            print("\nUsando matriz de ejemplo...")
+        
+        elif opcion == "2":
+            A= leer_matriz()
+        
+        elif opcion == "3":
+            print("Saliendo...")
+            break
+        
+        else:
+            print("Opción inválida.")
+            continue
+        
+        # Validación: matriz cuadrada
+        if len(A) != len(A[0]):
+            print("\nError: La matriz debe ser cuadrada.")
+            continue
+        
+        print("\nMatriz original:")
+        mostrar_matriz(A)
+        
+        resultado = diag(A)
+        
+        print("\nDiagonal resultante:")
+        print(resultado)
 
     #Ejercicio : LU
     L, U = lu(A)
