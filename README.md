@@ -9,7 +9,7 @@
 
 
 ## Uso e instalación
-No se necesita instalar ninguna libreria externa dado que se implementaron manualmente las operaciones matriciales. Unicamente se necesita Python.
+-De la libreria numpy usamos np.random para obtener los valores de la matriz generada.
 
 Se necesita abrir la terminal y correr: python main.py 
 
