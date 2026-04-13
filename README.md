@@ -29,6 +29,22 @@ Programar una función que reciba una Matriz cuadrada de tamaño n × n, T, que 
 triangular superior y que se encargue de eliminar todos los elementos superiores a la diagonal usando una
 vez más el método de eliminación Gaussiana.
 
+Matriz Resultante L:
+
+![Matriz L](Imagenes/mat_L.png)
+
+Matriz Resultante U:
+
+![Matriz U](Imagenes/mat_U.png)
+
+Debido a que se encontró un pivote 0, se tuvo que recurrir al pivoteo parcial (intercambiar las filas), lo que es igual a multiplicar nuestra matriz original por una matri de permutación P: PA= LU.
+
+Es por ello que al multiplicar LU tenemos un reenglón intercambiado.
+
+Matriz Resultante LU:
+
+![Matriz LU](Imagenes/mat_LU.png)
+
 ## Ejercicio 3
 
 Programar la descomposición QR de una matriz A usando el Proceso de Gram-Schmidt.

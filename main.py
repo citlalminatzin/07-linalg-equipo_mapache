@@ -77,7 +77,7 @@ def main():
     for fila in U:
         print(fila)
 
-    # Verificación
+    # Comprobación con LU
     print("\nComprobación L * U:")
     resultado = matmul(L, U)
     for fila in resultado:
