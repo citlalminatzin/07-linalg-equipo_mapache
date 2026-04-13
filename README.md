@@ -29,7 +29,7 @@ Matriz Diagonal Resultante:
 
 ## Ejercicio 2
 
-Programar una función que reciba una Matriz cuadrada de tamaño n × n, T, que además sea
+Programar una función que reciba la matriz cuadrada de tamaño n × n, A, que además sea
 triangular superior y que se encargue de eliminar todos los elementos superiores a la diagonal usando una
 vez más el método de eliminación Gaussiana.
 
