@@ -5,6 +5,7 @@ from gram_schmidt import matmul
 from gaussian_elimination import diag
 from lu import lu
 from qr import qr
+import numpy as np
 
 # linspace obtenido de (https://code.activestate.com/recipes/579000/)
 class linspace(Sequence):
@@ -44,45 +45,18 @@ class linspace(Sequence):
         return not self==other
     def __hash__(self):
         return hash((type(self), self.start, self.stop, self.num))  
-def leer_matriz():
-    while True:
-        try:
-            n = int(input("Número de filas: "))
-            m = int(input("Número de columnas: "))
-            
-            if n <= 0 or m <= 0:
-                print("Las dimensiones deben ser positivas.")
-                continue
-            
-            break
-        except ValueError:
-            print("Entrada inválida. Intenta de nuevo.")
-    
-    A = []
-    for i in range(n):
-        while True:
-            try:
-                fila = list(map(float, input(f"Fila {i+1} (separa por espacios): ").split()))
-                
-                if len(fila) != m:
-                    print(f"Ingresa exactamente {m} valores.")
-                    continue
-                
-                A.append(fila)
-                break
-            except ValueError:
-                print("Entrada inválida. Usa solo números.")
-    
-    return A
+
+def generar_matriz(n):
+    return np.random.random((n, n)).tolist()
 
 def mostrar_matriz(A):
     for fila in A:
         print(fila)
-        
-def ejercicio1():
+
+def ejercicio1(A):
     print("\n--- EJERCICIO 1: DIAGONALIZACIÓN ---")
     print("1. Usar matriz de ejemplo")
-    print("2. Ingresar matriz")
+    print("2. generar matriz")
     print("3. Regresar")
 
     opcion = input("Selecciona una opción: ")
@@ -97,7 +71,7 @@ def ejercicio1():
         print("\nUsando matriz de ejemplo...")
 
     elif opcion == "2":
-        A = leer_matriz()
+        A = generar_matriz(n)
 
     elif opcion == "3":
         return
@@ -117,10 +91,8 @@ def ejercicio1():
     resultado = diag(A)
     print(resultado)
 
-
-def ejercicio2():
+def ejercicio2(A):
     print("\n--- EJERCICIO 2: FACTORIZACIÓN LU ---")
-    A = leer_matriz()
 
     print("\nMatriz:")
     mostrar_matriz(A)
@@ -140,11 +112,9 @@ def ejercicio2():
     resultado = matmul(L, U)
     for fila in resultado:
         print(fila)
-
-
-def ejercicio3():
+    
+def ejercicio3(A):
     print("\n--- EJERCICIO 3: FACTORIZACIÓN QR ---")
-    A = leer_matriz()
 
     print("\nMatriz:")
     mostrar_matriz(A)
@@ -170,18 +140,24 @@ def menu():
 
 
 def main():
+    n = 4  # tamaño de la matriz
+    A = generar_matriz(n)
+
+    print("\nMatriz generada:")
+    mostrar_matriz(A)
+
     while True:
         menu()
         opcion = input("Selecciona una opción: ")
 
         if opcion == "1":
-            ejercicio1()
+            ejercicio1(A)
 
         elif opcion == "2":
-            ejercicio2()
+            ejercicio2(A)
 
         elif opcion == "3":
-            ejercicio3()
+            ejercicio3(A)
 
         elif opcion == "4":
             print("Saliendo...")
@@ -189,6 +165,7 @@ def main():
 
         else:
             print("Opción inválida.")
+    
 
 if __name__ == "__main__": 
     main()
