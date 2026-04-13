@@ -114,7 +114,7 @@ def ejercicio2(A):
     for fila in U:
         print(fila)
 
-    print("\nComprobación L * U:")
+    print("\nComprobación L * U = P * A:")
     resultado = matmul(L, U)
     for fila in resultado:
         print(fila)
