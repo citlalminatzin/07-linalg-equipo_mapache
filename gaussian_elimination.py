@@ -91,8 +91,8 @@ def mostrar_matriz(A):
 
 
 def menu():
-    print("1. Ingresar matriz")
-    print("2. Usar matriz de ejemplo")
+    print("1. Ejemplo ejercicio 1.")
+    print("2. Ingresar una matriz")
     print("3. Salir")
 
 
@@ -102,9 +102,6 @@ def main():
         opcion = input("Selecciona una opción: ")
         
         if opcion == "1":
-            A = leer_matriz()
-        
-        elif opcion == "2":
             A = [
                 [1, 2, -2, 1],
                 [4, 5, -7, 6],
@@ -112,6 +109,9 @@ def main():
                 [6, -12, -6, 22]
             ]
             print("\nUsando matriz de ejemplo...")
+        
+        elif opcion == "2":
+            A= leer_matriz()
         
         elif opcion == "3":
             print("Saliendo...")
