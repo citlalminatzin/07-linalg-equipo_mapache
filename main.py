@@ -87,10 +87,10 @@ def ejercicio1(n):
     mostrar_matriz(A)
 
     triangular = gaussian_elimination(A)
-    print("Matriz triangular:")
+    print("\nMatriz triangular:")
     print(triangular)
 
-    print("Matriz diagonalizada:")
+    print("\nMatriz diagonalizada:")
     diagonalizada = triang_sup_to_diag(triangular)
 
     print("\nDiagonal")
