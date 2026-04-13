@@ -45,90 +45,55 @@ class linspace(Sequence):
     def __hash__(self):
         return hash((type(self), self.start, self.stop, self.num))  
 
-'''funciones para el ejercicio 1.'''
+def ejercicio1():
+    print("\n--- EJERCICIO 1: DIAGONALIZACIÓN ---")
+    print("1. Usar matriz de ejemplo")
+    print("2. Ingresar matriz")
+    print("3. Regresar")
 
-def leer_matriz():
-    while True:
-        try:
-            n = int(input("Número de filas: "))
-            m = int(input("Número de columnas: "))
-            
-            if n <= 0 or m <= 0:
-                print("Las dimensiones deben ser positivas.")
-                continue
-            
-            break
-        except ValueError:
-            print("Entrada inválida. Intenta de nuevo.")
-    
-    A = []
-    for i in range(n):
-        while True:
-            try:
-                fila = list(map(float, input(f"Fila {i+1} (separa por espacios): ").split()))
-                
-                if len(fila) != m:
-                    print(f"Ingresa exactamente {m} valores.")
-                    continue
-                
-                A.append(fila)
-                break
-            except ValueError:
-                print("Entrada inválida. Usa solo números.")
-    
-    return A
+    opcion = input("Selecciona una opción: ")
 
-def mostrar_matriz(A):
-    for fila in A:
-        print(fila)
+    if opcion == "1":
+        A = [
+            [1, 2, -2, 1],
+            [4, 5, -7, 6],
+            [5, 25, -15, -3],
+            [6, -12, -6, 22]
+        ]
+        print("\nUsando matriz de ejemplo...")
+
+    elif opcion == "2":
+        A = leer_matriz()
+
+    elif opcion == "3":
+        return
+
+    else:
+        print("Opción inválida.")
+        return
+
+    if len(A) != len(A[0]):
+        print("La matriz debe ser cuadrada.")
+        return
+
+    print("\nMatriz:")
+    mostrar_matriz(A)
+
+    print("\nDiagonalización:")
+    resultado = diag(A)
+    print(resultado)
 
 
-def menu():
-    print("1. Ejemplo ejercicio 1.")
-    print("2. Ingresar una matriz")
-    print("3. Salir")
+def ejercicio2():
+    print("\n--- EJERCICIO 2: FACTORIZACIÓN LU ---")
+    A = leer_matriz()
 
-def main():
-    # Ejercicio 1: Diagonalización
-    while True:
-        menu()
-        opcion = input("Selecciona una opción: ")
-        
-        if opcion == "1":
-            A = [
-                [1, 2, -2, 1],
-                [4, 5, -7, 6],
-                [5, 25, -15, -3],
-                [6, -12, -6, 22]
-            ]
-            print("\nUsando matriz de ejemplo...")
-        
-        elif opcion == "2":
-            A= leer_matriz()
-        
-        elif opcion == "3":
-            print("Saliendo...")
-            break
-        
-        else:
-            print("Opción inválida.")
-            continue
-        
-        # Validación: matriz cuadrada
-        if len(A) != len(A[0]):
-            print("\nError: La matriz debe ser cuadrada.")
-            continue
-        
-        print("\nMatriz original:")
-        mostrar_matriz(A)
-        
-        resultado = diag(A)
-        
-        print("\nDiagonal resultante:")
-        print(resultado)
+    print("\nMatriz:")
+    mostrar_matriz(A)
 
-    #Ejercicio : LU
+    print("\nFactorización LU:")
     L, U = lu(A)
+
     print("\nL:")
     for fila in L:
         print(fila)
@@ -137,14 +102,22 @@ def main():
     for fila in U:
         print(fila)
 
-    # Comprobación con LU
     print("\nComprobación L * U:")
     resultado = matmul(L, U)
     for fila in resultado:
         print(fila)
 
-    # Ejercicio 3: QR
+
+def ejercicio3():
+    print("\n--- EJERCICIO 3: FACTORIZACIÓN QR ---")
+    A = leer_matriz()
+
+    print("\nMatriz:")
+    mostrar_matriz(A)
+
+    print("\nFactorización QR:")
     Q, R = qr(A)
+
     print("\nQ:")
     for fila in Q:
         print(fila)
@@ -153,5 +126,32 @@ def main():
     for fila in R:
         print(fila)
 
-if __name__ == "__main__":
-    main()
+
+def menu():
+    print("\n--- MENÚ PRINCIPAL ---")
+    print("1. Ejercicio 1: Diagonalización")
+    print("2. Ejercicio 2: Factorización LU")
+    print("3. Ejercicio 3: Factorización QR")
+    print("4. Salir")
+
+
+def main():
+    while True:
+        menu()
+        opcion = input("Selecciona una opción: ")
+
+        if opcion == "1":
+            ejercicio1()
+
+        elif opcion == "2":
+            ejercicio2()
+
+        elif opcion == "3":
+            ejercicio3()
+
+        elif opcion == "4":
+            print("Saliendo...")
+            break
+
+        else:
+            print("Opción inválida.")
