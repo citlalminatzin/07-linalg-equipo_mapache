@@ -45,13 +45,14 @@ class linspace(Sequence):
         return hash((type(self), self.start, self.stop, self.num))  
 
 def generar_matriz(n):
-    return np.random.random((n, n)).tolist()
+    return np.random.random((n,n)).tolist()
 
 def mostrar_matriz(A):
     for fila in A:
-        print(fila)
+        # Formateo a 2 decimales 
+        print([round(x, 2) for x in fila])
 
-def ejercicio1(A, n):
+def ejercicio1(A):
     print("\n--- EJERCICIO 1: DIAGONALIZACIÓN ---")
     print("1. Usar matriz de ejemplo")
     print("2. generar matriz")
@@ -138,7 +139,7 @@ def menu():
 
 
 def main():
-    n = 4  # tamaño de la matriz
+    n = n = int(input("Ingresa el tamaño de la matriz: "))
     A = generar_matriz(n)
 
     print("\nMatriz generada:")
@@ -149,7 +150,7 @@ def main():
         opcion = input("Selecciona una opción: ")
 
         if opcion == "1":
-            ejercicio1(A,n)
+            ejercicio1(A)
 
         elif opcion == "2":
             ejercicio2(A)
