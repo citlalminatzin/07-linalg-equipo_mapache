@@ -1,20 +1,18 @@
 #!/usr/bin/env python
 
-import collections
-import numbers
-
-from math import pi
-
-from linear_solver import solve
+from collections.abc import Sequence
+from gram_schmidt import matmul
+from gaussian_elimination import gaussian_elimination, diag, triang_sup_to_diag
+from lu import lu
+from qr import qr
+import numpy as np
 
 # linspace obtenido de (https://code.activestate.com/recipes/579000/)
-class linspace(collections.abc.Sequence):
-    """linspace(start, stop, num) -> linspace object
+class linspace(Sequence):
+    #linspace(start, stop, num) -> linspace object
+    #Return a virtual sequence of num numbers from start to stop (inclusive).
+    #If you need a half-open range, use linspace(start, stop, num+1)[:-1].
     
-    Return a virtual sequence of num numbers from start to stop (inclusive).
-    
-    If you need a half-open range, use linspace(start, stop, num+1)[:-1].
-    """
     
     def __init__(self, start, stop, num):
         if not isinstance(num, numbers.Integral) or num <= 1:
@@ -46,8 +44,182 @@ class linspace(collections.abc.Sequence):
     def __hash__(self):
         return hash((type(self), self.start, self.stop, self.num))  
 
-def main():
-    ...
+def generar_matriz(n):
+    return np.random.random((n,n)).tolist()
 
-if __name__ == "__main__":
+def mostrar_matriz(A):
+    for fila in A:
+        # Formateo a 2 decimales 
+        print([round(x, 2) for x in fila])
+
+def ejercicio1(n):
+    print("\n--- EJERCICIO 1: DIAGONALIZACIÓN ---")
+    print("1. Usar matriz de ejemplo")
+    print("2. generar matriz")
+    print("3. Regresar")
+
+    opcion = input("Selecciona una opción: ")
+
+    if opcion == "1":
+        A = [
+            [1, 2, -2, 1],
+            [4, 5, -7, 6],
+            [5, 25, -15, -3],
+            [6, -12, -6, 22]
+        ]
+        print("\nUsando matriz de ejemplo...")
+
+    elif opcion == "2":
+        A = generar_matriz(n)
+
+    elif opcion == "3":
+        return
+
+    else:
+        print("Opción inválida.")
+        return
+
+    if len(A) != len(A[0]):
+        print("La matriz debe ser cuadrada.")
+        return
+
+    print("\nMatriz:")
+    mostrar_matriz(A)
+
+    triangular = gaussian_elimination(A)
+    print("\nMatriz triangular:")
+    print(triangular)
+
+    print("\nMatriz diagonalizada:")
+    diagonalizada = triang_sup_to_diag(triangular)
+    mostrar_matriz(diagonalizada)
+
+    print("\nDiagonal")
+    diagonal = diag(A)
+    print(diagonal)
+
+def ejercicio2(n):
+    print("\n--- EJERCICIO 2: FACTORIZACIÓN LU ---")
+    print("1. Usar matriz de ejemplo")
+    print("2. Generar matriz")
+    print("3. Regresar")
+
+    opcion = input("Selecciona una opción: ")
+
+    if opcion == "1":
+        A = [
+            [1, 2, -2, 1],
+            [4, 5, -7, 6],
+            [5, 25, -15, -3],
+            [6, -12, -6, 22]
+        ]
+        print("\nUsando matriz de ejemplo...")
+
+    elif opcion == "2":
+        A = generar_matriz(n)
+
+    elif opcion == "3":
+        return
+
+    else:
+        print("Opción inválida.")
+        return
+
+    print("\nMatriz:")
+    mostrar_matriz(A)
+
+    print("\nFactorización LU:")
+    L, U = lu(A)
+
+    print("\nL:")
+    for fila in L:
+        print(fila)
+
+    print("\nU:")
+    for fila in U:
+        print(fila)
+
+    print("\nComprobación L * U = P * A:")
+    resultado = matmul(L, U)
+    for fila in resultado:
+        print(fila)
+    
+def ejercicio3(n):
+    print("\n--- EJERCICIO 3: FACTORIZACIÓN QR ---")
+    print("1. Usar matriz de ejemplo")
+    print("2. Generar matriz")
+    print("3. Regresar")
+
+    opcion = input("Selecciona una opción: ")
+
+    if opcion == "1":
+        A = [
+            [1, 2, -2, 1],
+            [4, 5, -7, 6],
+            [5, 25, -15, -3],
+            [6, -12, -6, 22]
+        ]
+        print("\nUsando matriz de ejemplo...")
+
+    elif opcion == "2":
+        A = generar_matriz(n)
+
+    elif opcion == "3":
+        return
+
+    else:
+        print("Opción inválida.")
+        return
+
+    print("\nMatriz:")
+    mostrar_matriz(A)
+
+    print("\nFactorización QR:")
+    Q, R = qr(A)
+
+    print("\nQ:")
+    for fila in Q:
+        print(fila)
+
+    print("\nR:")
+    for fila in R:
+        print(fila)
+
+def menu():
+    print("\n--- MENÚ PRINCIPAL ---")
+    print("1. Ejercicio 1: Diagonalización")
+    print("2. Ejercicio 2: Factorización LU")
+    print("3. Ejercicio 3: Factorización QR")
+    print("4. Salir")
+
+
+def main():
+    n = n = int(input("Ingresa el tamaño de la matriz: "))
+    A = generar_matriz(n)
+
+    print("\nMatriz generada:")
+    mostrar_matriz(A)
+
+    while True:
+        menu()
+        opcion = input("Selecciona una opción: ")
+
+        if opcion == "1":
+            ejercicio1(n)
+
+        elif opcion == "2":
+            ejercicio2(n)
+
+        elif opcion == "3":
+            ejercicio3(n)
+
+        elif opcion == "4":
+            print("Saliendo...")
+            break
+
+        else:
+            print("Opción inválida.")
+    
+
+if __name__ == "__main__": 
     main()

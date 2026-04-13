@@ -1,39 +1,39 @@
 #!/usr/bin/env python
 
-"""
-Calcula la factorización de gram-schmidt
-para una matriz de tamaño n
-"""
+#Calcula la factorización de gram-schmidt para una matriz de tamaño n
+
 
 def dot(x:list[float], y:list[float])->float:
-    """Producto punto entre dos vectores"""
-    ...
+    #Producto punto entre dos vectores
+    return sum(xi*yi for xi, yi in zip(x, y))
 
 def transpose(M:list[list[float]])->list[tuple[float]]:
-    """Devuelve traspuesta de una matriz"""
-    ...
+    #Devuelve la traspuesta de una matriz
+    return list(zip(*M))
 
 def matmul(A:list[list[float]], B:list[list[float]])->list[list[float]]:
-    """Multiplicación de dos matrices"""
-    ...
+    #Multiplicación de dos matrices
+    return [[dot(row, col) for col in transpose(B)] for row in A]
 
 def matvec(A:list[list[float]], v:list[float]) -> list[float]:
-    """Multiplicación de matriz por un vector"""
+    #Multiplicación de matriz por un vector
+    return [dot(row, v) for row in A]
 
 def norm(x:list[float])->float:
-    """Obtiene la norma 2 de un vector"""
-    ...
+    #Obtiene la norma 2 de un vector
+    return dot(x, x) ** 0.5
 
 def proj(u:list[float], v:list[float])->list[float]:
-    """Calcula la proyección de u en v"""
-    ...
+    #Calcula la proyección de u en v
+    return [dot(u, v) / dot(v, v) * vi for vi in v]
 
 def normalize(u:list[float])->list[float]:
-    """Normaliza un vector"""
-    ...
+    #Normaliza un vector
+    n = norm(u)
+    return [x / n for x in u]
 
 def matrix_to_str(matrix: list[list[float]])->str:
-    """Convierte una matriz a texto"""
+    #Convierte una matriz a texto
     s = [[str(e) for e in row] for row in matrix]
     lens = [max(map(len, col)) for col in zip(*s)]
     fmt = '\t'.join('{{:{}}}'.format(x) for x in lens)
