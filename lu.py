@@ -1,5 +1,5 @@
 def lu(M:list[list[float]]):
-    """Dada una matriz M regresa su factorización LU"""
+    #Dada una matriz M regresa su factorización LU
     n = len(M)
     L = [[0]*n for _ in range(n)]
     for i in range(n):

@@ -1,6 +1,6 @@
 def gaussian_elimination(M: list[list[float]]):
-    """ Dada una matriz M regresa una matriz triangular
-    superior usando eliminacion gaussiana usando un pivote parcial. """
+    #Dada una matriz M regresa una matriz triangular
+    #superior usando eliminacion gaussiana usando un pivote parcial. 
     n = len(M)
     A = [fila[:] for fila in M]
 
