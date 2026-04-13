@@ -2,7 +2,7 @@
 
 from collections.abc import Sequence
 from gram_schmidt import matmul
-from gaussian_elimination import diag
+from gaussian_elimination import gaussian_elimination, diag, triang_sup_to_diag
 from lu import lu
 from qr import qr
 import numpy as np
@@ -86,9 +86,16 @@ def ejercicio1(n):
     print("\nMatriz:")
     mostrar_matriz(A)
 
-    print("\nDiagonalización:")
-    resultado = diag(A)
-    print(resultado)
+    triangular = gaussian_elimination(A)
+    print("Matriz triangular:")
+    print(triangular)
+
+    print("Matriz diagonalizada:")
+    diagonalizada = triang_sup_to_diag(triangular)
+
+    print("\nDiagonal")
+    diagonal = diag(A)
+    print(diagonal)
 
 def ejercicio2(A):
     print("\n--- EJERCICIO 2: FACTORIZACIÓN LU ---")
