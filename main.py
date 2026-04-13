@@ -52,7 +52,7 @@ def mostrar_matriz(A):
         # Formateo a 2 decimales 
         print([round(x, 2) for x in fila])
 
-def ejercicio1(A):
+def ejercicio1(n):
     print("\n--- EJERCICIO 1: DIAGONALIZACIÓN ---")
     print("1. Usar matriz de ejemplo")
     print("2. generar matriz")
@@ -150,7 +150,7 @@ def main():
         opcion = input("Selecciona una opción: ")
 
         if opcion == "1":
-            ejercicio1(A)
+            ejercicio1(n)
 
         elif opcion == "2":
             ejercicio2(A)
