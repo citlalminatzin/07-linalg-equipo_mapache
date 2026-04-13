@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 
-import collections
+from collections.abc import Sequence
 import numbers
 
 from math import pi
 
-from gaussian_elimination import solve
+from gaussian_elimination import diag
+from qr import qr
 
 # linspace obtenido de (https://code.activestate.com/recipes/579000/)
-class linspace(collections.abc.Sequence):
+class linspace(Sequence):
     """linspace(start, stop, num) -> linspace object
     
     Return a virtual sequence of num numbers from start to stop (inclusive).
@@ -47,7 +48,32 @@ class linspace(collections.abc.Sequence):
         return hash((type(self), self.start, self.stop, self.num))  
 
 def main():
-    ...
+
+    A = [
+        [1, 2, -2, 1],
+        [4, 5, -7, 6],
+        [5, 25, -15, -3],
+        [6, -12, -6, 22]
+    ]
+
+    print("Matriz original:")
+    for fila in A:
+        print(fila)
+
+    # Ejercicio 1: Diagonalización
+    d = diag(A)
+    print("\nDiagonal:")
+    print(d)
+
+    # Ejercicio 3: QR
+    Q, R = qr(A)
+    print("\nQ:")
+    for fila in Q:
+        print(fila)
+
+    print("\nR:")
+    for fila in R:
+        print(fila)
 
 if __name__ == "__main__":
     main()
