@@ -2,10 +2,6 @@
 
 from collections.abc import Sequence
 from gram_schmidt import matmul
-
-import numbers
-from math import pi
-
 from gaussian_elimination import diag
 from lu import lu
 from qr import qr
