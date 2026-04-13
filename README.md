@@ -9,7 +9,9 @@
 
 
 ## Uso e instalación
+No se necesita instalar ninguna libreria externa dado que se implementaron manualmente las operaciones matriciales. Unicamente se necesita Python.
 
+Se necesita abrir la terminal y correr: python main.py 
 
 ## Ejercicio 1
 
@@ -19,13 +21,15 @@ La matriz con la que estaremos trabajando es:
 
 ![Matriz A](Imagenes/mat_A.png)
 
+Es importante resaltar que las siguientes matrices tienen redonde de 4 decimas, sin embargo, en el código, los cálculos se representan con mayor exactitud. Esto con la intención de mostrar un visual más limpio.
+
 Matriz Diagonal Resultante:
 
 ![Diagonal](Imagenes/Diagonal.png)
 
 ## Ejercicio 2
 
-Programar una función que reciba una Matriz cuadrada de tamaño n × n, T, que además sea
+Programar una función que reciba la matriz cuadrada de tamaño n × n, A, que además sea
 triangular superior y que se encargue de eliminar todos los elementos superiores a la diagonal usando una
 vez más el método de eliminación Gaussiana.
 
@@ -58,3 +62,4 @@ Matriz Resultante R:
 ![Matriz R](Imagenes/mat_R.png)
 
 ## Conclusión
+Esta práctica nos ayudó a entender los procedimientos mostrados y llevados a cabo en código. Nuestra mayor dificultad fue encontrar un pivote que fuese 0, pero consideramos que pudimos resolverlo del mejor modo. Nuestro aprendizaje en este trabajo ha sido el ser meticulosos con el código para obtrener los resultados que esperamos y el orden con nuestra práctica para que el trabajo en equipo sea fluido.
