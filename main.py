@@ -44,7 +44,41 @@ class linspace(Sequence):
         return not self==other
     def __hash__(self):
         return hash((type(self), self.start, self.stop, self.num))  
+def leer_matriz():
+    while True:
+        try:
+            n = int(input("Número de filas: "))
+            m = int(input("Número de columnas: "))
+            
+            if n <= 0 or m <= 0:
+                print("Las dimensiones deben ser positivas.")
+                continue
+            
+            break
+        except ValueError:
+            print("Entrada inválida. Intenta de nuevo.")
+    
+    A = []
+    for i in range(n):
+        while True:
+            try:
+                fila = list(map(float, input(f"Fila {i+1} (separa por espacios): ").split()))
+                
+                if len(fila) != m:
+                    print(f"Ingresa exactamente {m} valores.")
+                    continue
+                
+                A.append(fila)
+                break
+            except ValueError:
+                print("Entrada inválida. Usa solo números.")
+    
+    return A
 
+def mostrar_matriz(A):
+    for fila in A:
+        print(fila)
+        
 def ejercicio1():
     print("\n--- EJERCICIO 1: DIAGONALIZACIÓN ---")
     print("1. Usar matriz de ejemplo")
@@ -155,3 +189,6 @@ def main():
 
         else:
             print("Opción inválida.")
+
+if __name__ == "__main__": 
+    main()
