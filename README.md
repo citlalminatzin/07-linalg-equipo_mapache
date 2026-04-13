@@ -15,9 +15,13 @@
 
 Implementar el método de eliminación Gaussiana para diagonalizar una matriz cuadrada.
 
-Problema a considerar:
+La matriz con la que estaremos trabajando es:
 
 ![Matriz A](Imagenes/mat_A.png)
+
+Matriz Diagonal Resultante:
+
+![Diagonal](Imagenes/Diagonal.png)
 
 ## Ejercicio 2
 
@@ -28,5 +32,13 @@ vez más el método de eliminación Gaussiana.
 ## Ejercicio 3
 
 Programar la descomposición QR de una matriz A usando el Proceso de Gram-Schmidt.
+
+Matriz Resultante Q:
+
+![Matriz Q](Imagenes/mat_Q.png)
+
+Matriz Resultante R:
+
+![Matriz R](Imagenes/mat_R.png)
 
 ## Conclusión
