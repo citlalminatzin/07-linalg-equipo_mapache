@@ -51,7 +51,7 @@ def mostrar_matriz(A):
     for fila in A:
         print(fila)
 
-def ejercicio1(A):
+def ejercicio1(A, n):
     print("\n--- EJERCICIO 1: DIAGONALIZACIÓN ---")
     print("1. Usar matriz de ejemplo")
     print("2. generar matriz")
@@ -149,7 +149,7 @@ def main():
         opcion = input("Selecciona una opción: ")
 
         if opcion == "1":
-            ejercicio1(A)
+            ejercicio1(A,n)
 
         elif opcion == "2":
             ejercicio2(A)
