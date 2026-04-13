@@ -97,8 +97,32 @@ def ejercicio1(n):
     diagonal = diag(A)
     print(diagonal)
 
-def ejercicio2(A):
+def ejercicio2(n):
     print("\n--- EJERCICIO 2: FACTORIZACIÓN LU ---")
+    print("1. Usar matriz de ejemplo")
+    print("2. Generar matriz")
+    print("3. Regresar")
+
+    opcion = input("Selecciona una opción: ")
+
+    if opcion == "1":
+        A = [
+            [1, 2, -2, 1],
+            [4, 5, -7, 6],
+            [5, 25, -15, -3],
+            [6, -12, -6, 22]
+        ]
+        print("\nUsando matriz de ejemplo...")
+
+    elif opcion == "2":
+        A = generar_matriz(n)
+
+    elif opcion == "3":
+        return
+
+    else:
+        print("Opción inválida.")
+        return
 
     print("\nMatriz:")
     mostrar_matriz(A)
@@ -119,8 +143,32 @@ def ejercicio2(A):
     for fila in resultado:
         print(fila)
     
-def ejercicio3(A):
+def ejercicio3(n):
     print("\n--- EJERCICIO 3: FACTORIZACIÓN QR ---")
+    print("1. Usar matriz de ejemplo")
+    print("2. Generar matriz")
+    print("3. Regresar")
+
+    opcion = input("Selecciona una opción: ")
+
+    if opcion == "1":
+        A = [
+            [1, 2, -2, 1],
+            [4, 5, -7, 6],
+            [5, 25, -15, -3],
+            [6, -12, -6, 22]
+        ]
+        print("\nUsando matriz de ejemplo...")
+
+    elif opcion == "2":
+        A = generar_matriz(n)
+
+    elif opcion == "3":
+        return
+
+    else:
+        print("Opción inválida.")
+        return
 
     print("\nMatriz:")
     mostrar_matriz(A)
@@ -135,7 +183,6 @@ def ejercicio3(A):
     print("\nR:")
     for fila in R:
         print(fila)
-
 
 def menu():
     print("\n--- MENÚ PRINCIPAL ---")
@@ -160,10 +207,10 @@ def main():
             ejercicio1(n)
 
         elif opcion == "2":
-            ejercicio2(A)
+            ejercicio2(n)
 
         elif opcion == "3":
-            ejercicio3(A)
+            ejercicio3(n)
 
         elif opcion == "4":
             print("Saliendo...")
