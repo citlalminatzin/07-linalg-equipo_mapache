@@ -92,6 +92,7 @@ def ejercicio1(n):
 
     print("\nMatriz diagonalizada:")
     diagonalizada = triang_sup_to_diag(triangular)
+    mostrar_matriz(diagonalizada)
 
     print("\nDiagonal")
     diagonal = diag(A)
